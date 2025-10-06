@@ -1,7 +1,10 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
+  "name": "justine-cesaro-campo-portfolio",
+  "version": "1.0.0",
   "private": true,
+  "description": "Personal portfolio website of Justine Cesaro Campo - Frontend Developer",
+  "author": "Justine Cesaro Campo <justinecesarocampo@gmail.com>",
+  "homepage": "https://justinecesarocampo.vercel.app",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
