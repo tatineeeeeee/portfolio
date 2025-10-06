@@ -16,11 +16,11 @@ import {
 } from 'react-icons/si';
 
 export default function Portfolio() {
-  const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [loading, setLoading] = useState(true);
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set(['hero']));
+  const [isClient, setIsClient] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLElement>(null);
@@ -32,22 +32,19 @@ export default function Portfolio() {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         setVisibleSections(prev => new Set([...prev, entry.target.id]));
-      } else {
-        setVisibleSections(prev => {
-          const newSet = new Set(prev);
-          newSet.delete(entry.target.id);
-          return newSet;
-        });
       }
+      // Keep sections visible once they've been seen for better UX
     });
   }, []);
 
   useEffect(() => {
-    // Loading state
+    // Mark as client-side rendered to avoid hydration issues
+    setIsClient(true);
+    
+    // Immediately show content, reduce loading time
     const loadingTimer = setTimeout(() => {
       setLoading(false);
-      setIsVisible(true);
-    }, 1500);
+    }, 500);
 
     // Scroll animation handler
     const handleScroll = () => setScrollY(window.scrollY);
@@ -59,18 +56,26 @@ export default function Portfolio() {
 
     // Intersection Observer for sections
     const observer = new IntersectionObserver(observerCallback, {
-      threshold: 0.1,
-      rootMargin: '-10% 0px -10% 0px',
+      threshold: 0.2,
+      rootMargin: '-5% 0px -5% 0px',
     });
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
+    // Set initial scroll position
+    setScrollY(window.scrollY);
     
-    // Observe sections
-    const sections = [heroRef.current, aboutRef.current, projectsRef.current, skillsRef.current, contactRef.current];
-    sections.forEach(section => {
-      if (section) observer.observe(section);
-    });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    
+    // Observe sections with delay to ensure refs are ready
+    const observeSections = () => {
+      const sections = [heroRef.current, aboutRef.current, projectsRef.current, skillsRef.current, contactRef.current];
+      sections.forEach(section => {
+        if (section) observer.observe(section);
+      });
+    };
+    
+    // Delay observation to ensure DOM is ready
+    setTimeout(observeSections, 100);
 
     return () => {
       clearTimeout(loadingTimer);
@@ -154,7 +159,7 @@ export default function Portfolio() {
       description: 'Personal portfolio built with Next.js and Tailwind CSS featuring responsive design, smooth animations, and modern UI components.',
       tech: ['Next.js', 'Tailwind CSS', 'TypeScript', 'React'],
       github: 'https://github.com/tatineeeeeee/portfolio',
-      demo: 'https://justine-portfolio.vercel.app',
+      demo: 'https://justinecesarocampo.vercel.app',
       status: 'Live',
       highlight: true
     },
@@ -169,26 +174,26 @@ export default function Portfolio() {
   ];
 
   // Loading Screen Component
-  if (loading) {
-    return (
-      <div className="fixed inset-0 bg-slate-950 flex items-center justify-center z-50">
-        <div className="flex flex-col items-center justify-center text-center">
-          <div className="w-16 h-16 border-4 border-red-500/20 border-t-red-500 rounded-full animate-spin mb-4 mx-auto"></div>
-          <div className="text-slate-400 animate-pulse text-lg">Loading Portfolio...</div>
-        </div>
+  const LoadingScreen = () => (
+    <div className={`fixed inset-0 bg-slate-950 flex items-center justify-center z-50 transition-opacity duration-500 ${loading ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className="flex flex-col items-center justify-center text-center">
+        <div className="w-16 h-16 border-4 border-red-500/20 border-t-red-500 rounded-full animate-spin mb-4 mx-auto"></div>
+        <div className="text-slate-400 animate-pulse text-lg">Loading Portfolio...</div>
       </div>
-    );
-  }
+    </div>
+  );
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-red-500/20 relative overflow-x-hidden">
+    <>
+      <LoadingScreen />
+      <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-red-500/20 relative overflow-x-hidden">
       {/* Enhanced Background with Image */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         {/* Background Image with Overlay */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 transition-transform duration-75 ease-out"
           style={{
-            backgroundImage: "url('/my love.jpg')",
+            backgroundImage: "url('/love.jpg')",
             transform: `translateY(${scrollY * 0.5}px)`,
           }}
         ></div>
@@ -200,36 +205,40 @@ export default function Portfolio() {
         {/* Red Dot Overlay Pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(239,68,68,0.02)_1px,transparent_1px),radial-gradient(circle_at_75%_75%,rgba(239,68,68,0.015)_1px,transparent_1px)] bg-[size:100px_100px] z-1"></div>
         
-        {/* Dynamic Particle System */}
-        <div className="absolute inset-0 z-2">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-red-400/20 rounded-full animate-float"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${3 + Math.random() * 4}s`,
-              }}
-            />
-          ))}
-        </div>
+        {/* Dynamic Particle System - Client-side only to avoid hydration mismatch */}
+        {isClient && (
+          <div className="absolute inset-0 z-2">
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-1 bg-red-400/20 rounded-full animate-float"
+                style={{
+                  left: `${(i * 17 + 15) % 100}%`,
+                  top: `${(i * 23 + 25) % 100}%`,
+                  animationDelay: `${(i * 0.3) % 5}s`,
+                  animationDuration: `${3 + (i % 4)}s`,
+                }}
+              />
+            ))}
+          </div>
+        )}
         
-        {/* Additional Red Overlay Dots */}
-        <div className="absolute inset-0 z-1">
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={`dot-${i}`}
-              className="absolute w-0.5 h-0.5 bg-red-500/10 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 10}s`,
-              }}
-            />
-          ))}
-        </div>
+        {/* Additional Red Overlay Dots - Client-side only */}
+        {isClient && (
+          <div className="absolute inset-0 z-1">
+            {[...Array(50)].map((_, i) => (
+              <div
+                key={`dot-${i}`}
+                className="absolute w-0.5 h-0.5 bg-red-500/10 rounded-full"
+                style={{
+                  left: `${(i * 7 + 10) % 100}%`,
+                  top: `${(i * 13 + 20) % 100}%`,
+                  animationDelay: `${(i * 0.2) % 10}s`,
+                }}
+              />
+            ))}
+          </div>
+        )}
         
         {/* Enhanced Floating Orbs */}
         <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-red-500/10 rounded-full blur-xl animate-pulse opacity-50 z-1"></div>
@@ -301,7 +310,7 @@ export default function Portfolio() {
       {/* Hero Section */}
       <section ref={heroRef} id="hero" className="pt-32 pb-20 px-6 relative z-10">
         <div className="max-w-4xl mx-auto relative z-20">
-          <div className={`transition-all duration-1000 ${visibleSections.has('hero') || isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          <div className={`transition-all duration-1000 ${!loading ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
             <div className="mb-6">
               <p className="text-red-400 text-sm font-medium mb-2 animate-bounce">👋 Hello, I&apos;m</p>
               <div className="relative">
@@ -721,6 +730,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 }
