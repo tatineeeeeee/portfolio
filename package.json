@@ -12,9 +12,15 @@
     "lint": "eslint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "next": "16.1.4",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+=======
+    "next": "15.5.9",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+>>>>>>> 2e05a18c21cd65f6e9c0b72aeb39acc41a208dc7
     "react-icons": "^5.5.0"
   },
   "devDependencies": {
