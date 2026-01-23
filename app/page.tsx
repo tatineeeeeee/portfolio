@@ -24,9 +24,9 @@ import {
   HiOutlineMapPin,
   HiOutlineAcademicCap,
   HiOutlineLink,
-  HiOutlinePaperAirplane,
   HiOutlineArrowTopRightOnSquare,
 } from "react-icons/hi2";
+import ContactForm from "@/components/ContactForm";
 
 export default function Portfolio() {
   const [scrollY, setScrollY] = useState(0);
@@ -928,72 +928,73 @@ export default function Portfolio() {
             <div
               className={`grid md:grid-cols-2 gap-8 mb-12 transition-all duration-1000 ${visibleSections.has("contact") ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
             >
-              {/* Contact Info */}
+              {/* Contact Form */}
               <div className="bg-slate-900/30 rounded-2xl p-8 border border-slate-800/50 hover:border-red-500/30 transition-all duration-300 hover:bg-slate-900/50">
                 <h3 className="text-xl font-semibold mb-6 flex items-center">
                   <HiOutlineChatBubbleLeftRight className="w-6 h-6 mr-2 text-red-400" />
-                  Get in touch
+                  Send a message
                 </h3>
-                <div className="space-y-4">
-                  <div className="flex items-center text-slate-300">
-                    <HiOutlineEnvelope className="w-5 h-5 mr-3 text-red-400" />
-                    <span>justinecesarocampo@gmail.com</span>
+                <ContactForm />
+              </div>
+
+              {/* Contact Info & Links */}
+              <div className="space-y-8">
+                {/* Contact Info */}
+                <div className="bg-slate-900/30 rounded-2xl p-8 border border-slate-800/50 hover:border-red-500/30 transition-all duration-300 hover:bg-slate-900/50">
+                  <h3 className="text-xl font-semibold mb-6 flex items-center">
+                    <HiOutlineEnvelope className="w-6 h-6 mr-2 text-red-400" />
+                    Get in touch
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center text-slate-300">
+                      <HiOutlineEnvelope className="w-5 h-5 mr-3 text-red-400" />
+                      <span>justinecesarocampo@gmail.com</span>
+                    </div>
+                    <div className="flex items-center text-slate-300">
+                      <HiOutlineMapPin className="w-5 h-5 mr-3 text-red-400" />
+                      <span>Available for remote work</span>
+                    </div>
+                    <div className="flex items-center text-slate-300">
+                      <HiOutlineAcademicCap className="w-5 h-5 mr-3 text-red-400" />
+                      <span>Open to internships & entry-level positions</span>
+                    </div>
                   </div>
-                  <div className="flex items-center text-slate-300">
-                    <HiOutlineMapPin className="w-5 h-5 mr-3 text-red-400" />
-                    <span>Available for remote work</span>
-                  </div>
-                  <div className="flex items-center text-slate-300">
-                    <HiOutlineAcademicCap className="w-5 h-5 mr-3 text-red-400" />
-                    <span>Open to internships & entry-level positions</span>
+                </div>
+
+                {/* Quick Links */}
+                <div className="bg-slate-900/30 rounded-2xl p-8 border border-slate-800/50 hover:border-red-500/30 transition-all duration-300 hover:bg-slate-900/50">
+                  <h3 className="text-xl font-semibold mb-6 flex items-center">
+                    <HiOutlineLink className="w-6 h-6 mr-2 text-red-400" />
+                    Connect with me
+                  </h3>
+                  <div className="space-y-4">
+                    <a
+                      href="https://github.com/tatineeeeeee"
+                      target="_blank"
+                      className="flex items-center text-slate-300 hover:text-red-400 transition-colors group"
+                    >
+                      <SiGithub className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" />
+                      <span>GitHub Profile</span>
+                    </a>
+                    <a
+                      href="https://linkedin.com/in/yourusername"
+                      target="_blank"
+                      className="flex items-center text-slate-300 hover:text-red-400 transition-colors group"
+                    >
+                      <SiLinkedin className="w-5 h-5 mr-3 text-[#0A66C2] group-hover:scale-110 transition-transform" />
+                      <span>LinkedIn Profile</span>
+                    </a>
+                    <a
+                      href="https://www.facebook.com/justinecesarocampo05"
+                      target="_blank"
+                      className="flex items-center text-slate-300 hover:text-red-400 transition-colors group"
+                    >
+                      <SiFacebook className="w-5 h-5 mr-3 text-[#1877F2] group-hover:scale-110 transition-transform" />
+                      <span>Facebook Profile</span>
+                    </a>
                   </div>
                 </div>
               </div>
-
-              {/* Quick Links */}
-              <div className="bg-slate-900/30 rounded-2xl p-8 border border-slate-800/50 hover:border-red-500/30 transition-all duration-300 hover:bg-slate-900/50">
-                <h3 className="text-xl font-semibold mb-6 flex items-center">
-                  <HiOutlineLink className="w-6 h-6 mr-2 text-red-400" />
-                  Connect with me
-                </h3>
-                <div className="space-y-4">
-                  <a
-                    href="https://github.com/tatineeeeeee"
-                    target="_blank"
-                    className="flex items-center text-slate-300 hover:text-red-400 transition-colors group"
-                  >
-                    <SiGithub className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" />
-                    <span>GitHub Profile</span>
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/yourusername"
-                    target="_blank"
-                    className="flex items-center text-slate-300 hover:text-red-400 transition-colors group"
-                  >
-                    <SiLinkedin className="w-5 h-5 mr-3 text-[#0A66C2] group-hover:scale-110 transition-transform" />
-                    <span>LinkedIn Profile</span>
-                  </a>
-                  <a
-                    href="https://www.facebook.com/justinecesarocampo05"
-                    target="_blank"
-                    className="flex items-center text-slate-300 hover:text-red-400 transition-colors group"
-                  >
-                    <SiFacebook className="w-5 h-5 mr-3 text-[#1877F2] group-hover:scale-110 transition-transform" />
-                    <span>Facebook Profile</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="text-center transition-all duration-1000 delay-300 translate-y-0 opacity-100">
-              <a
-                href="mailto:justinecesarocampo@gmail.com"
-                className="inline-flex items-center bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25"
-              >
-                <HiOutlinePaperAirplane className="w-5 h-5 mr-2" />
-                <span>Send me an email</span>
-              </a>
             </div>
           </div>
         </section>
