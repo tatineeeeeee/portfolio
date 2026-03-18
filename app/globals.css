@@ -263,3 +263,62 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(220 38 38);
 }
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-gradient,
+  .animate-slide-down,
+  .animate-slide-right,
+  .animate-fade-in-up,
+  .animate-float,
+  .animate-particle-float,
+  .animate-glow-pulse,
+  .animate-typing,
+  .animate-shake,
+  .animate-bounce-in {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgb(239 68 68);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 0.75rem 1.5rem;
+  background: rgb(239 68 68);
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+
+.skip-to-content:focus {
+  top: 1rem;
+}

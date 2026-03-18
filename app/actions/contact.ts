@@ -11,14 +11,49 @@ type ContactFormState = {
     message: string
 } | null
 
+// Simple in-memory rate limiting
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
+const RATE_LIMIT_WINDOW = 60 * 1000 // 1 minute
+const MAX_REQUESTS = 3 // 3 submissions per minute
+
+function isRateLimited(ip: string): boolean {
+    const now = Date.now()
+    const entry = rateLimitMap.get(ip)
+
+    if (!entry || now > entry.resetTime) {
+        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW })
+        return false
+    }
+
+    entry.count++
+    return entry.count > MAX_REQUESTS
+}
+
+function validateEmail(email: string): boolean {
+    // RFC 5322 compliant email validation
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/
+    if (!emailRegex.test(email)) return false
+    if (email.length > 254) return false
+    return true
+}
+
+function sanitizeHtml(str: string): string {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;')
+}
+
 export async function submitContactForm(
     prevState: ContactFormState,
     formData: FormData
 ): Promise<ContactFormState> {
-    const name = formData.get('name') as string
-    const email = formData.get('email') as string
-    const subject = formData.get('subject') as string
-    const message = formData.get('message') as string
+    const name = (formData.get('name') as string)?.trim()
+    const email = (formData.get('email') as string)?.trim()
+    const subject = (formData.get('subject') as string)?.trim()
+    const message = (formData.get('message') as string)?.trim()
 
     // Validation
     if (!name || !email || !message) {
@@ -28,12 +63,27 @@ export async function submitContactForm(
         }
     }
 
+    // Length validation
+    if (name.length > 100 || email.length > 254 || (subject && subject.length > 200) || message.length > 5000) {
+        return {
+            success: false,
+            message: 'One or more fields exceed the maximum length.',
+        }
+    }
+
     // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
+    if (!validateEmail(email)) {
         return {
             success: false,
             message: 'Please enter a valid email address.',
+        }
+    }
+
+    // Rate limiting (using email as identifier since we don't have IP in server actions easily)
+    if (isRateLimited(email)) {
+        return {
+            success: false,
+            message: 'Too many submissions. Please try again in a minute.',
         }
     }
 
@@ -74,19 +124,24 @@ export async function submitContactForm(
             }
         }
 
-        // Send email notification
+        // Send email notification with sanitized HTML
+        const safeName = sanitizeHtml(name)
+        const safeEmail = sanitizeHtml(email)
+        const safeSubject = sanitizeHtml(subject || 'No Subject')
+        const safeMessage = sanitizeHtml(message)
+
         await resend.emails.send({
             from: 'Portfolio Contact <onboarding@resend.dev>',
             to: 'justinecesarocampo@gmail.com',
-            subject: `New Contact: ${subject || 'No Subject'}`,
+            subject: `New Contact: ${safeSubject}`,
             html: `
                 <h2>New Contact Form Submission</h2>
-                <p><strong>From:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Subject:</strong> ${subject || 'No Subject'}</p>
+                <p><strong>From:</strong> ${safeName}</p>
+                <p><strong>Email:</strong> ${safeEmail}</p>
+                <p><strong>Subject:</strong> ${safeSubject}</p>
                 <hr />
                 <p><strong>Message:</strong></p>
-                <p>${message.replace(/\n/g, '<br>')}</p>
+                <p>${safeMessage.replace(/\n/g, '<br>')}</p>
                 <hr />
                 <p style="color: #666; font-size: 12px;">Sent from your portfolio contact form</p>
             `,
