@@ -17,31 +17,41 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Portfolio Website",
-    description:
-      "Personal portfolio built with Next.js and Tailwind CSS featuring responsive design, smooth animations, and modern UI components.",
-    tech: ["Next.js", "Tailwind CSS", "TypeScript", "React"],
-    github: "https://github.com/tatineeeeeee/portfolio",
-    demo: "https://justinecesarocampo.vercel.app",
-    status: "Live",
-    highlight: true,
-    image: "/projects/portfolio.png",
-  },
-  {
     title: "Kampo Ibayo Resort - Booking System",
     description:
-      "A comprehensive full-stack booking management system for a resort featuring real-time availability, payment processing with PayMongo, administrative dashboard, and automated email notifications.",
+      "Full-stack resort booking platform handling real customer reservations and payments. Built with PayMongo API for secure payment processing, Supabase for real-time availability management, and an admin dashboard for resort staff. Processes live transactions for an operating business.",
     tech: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Supabase", "PayMongo API"],
     github: "https://github.com/tatineeeeeee/kampo-ibayo-UI-",
     demo: "https://kampo-ibayo-resort.vercel.app/",
     status: "Live",
+    highlight: true,
     image: "/projects/kampo-ibayo.png",
+  },
+  {
+    title: "Portfolio Website",
+    description:
+      "Personal portfolio built with Next.js and Tailwind CSS featuring responsive design, scroll-triggered animations, a contact form with database storage via Nhost, and SEO optimization with sitemap generation.",
+    tech: ["Next.js", "Tailwind CSS", "TypeScript", "React", "Nhost"],
+    github: "https://github.com/tatineeeeeee/portfolio",
+    demo: "https://justinecesarocampo.vercel.app",
+    status: "Live",
+    image: "/projects/portfolio.png",
+  },
+  {
+    title: "CollabSpace",
+    description:
+      "A real-time collaboration workspace combining document editing and kanban boards. Features user authentication with Clerk, a rich text editor with 25+ block types, drag-and-drop project management, and real-time data sync with Convex.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Convex", "Clerk"],
+    github: "https://github.com/tatineeeeeee/CollabSpace",
+    demo: "",
+    status: "In Progress",
+    image: "/projects/collabspace.png",
   },
   {
     title: "DevLearn - Tutorial Platform",
     description:
-      "An interactive developer learning platform featuring mobile navigation, progress tracking, pagination, and SEO optimization for an enhanced learning experience.",
-    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
+      "Developer learning platform with structured MDX tutorial content, full-text search, code syntax highlighting, and mobile-first navigation. Built to explore content-driven application architecture and SEO best practices.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "MDX"],
     github: "https://github.com/tatineeeeeee/devlearn",
     demo: "https://devlearn-tutorial.vercel.app",
     status: "Live",
@@ -82,16 +92,18 @@ function ProjectLinks({ github, demo }: { github: string; demo: string }) {
         <SiGithub className="w-5 h-5 mr-2" aria-hidden="true" />
         View Code
       </a>
-      <a
-        href={demo}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center text-slate-400 hover:text-red-400 transition-colors"
-        aria-label="View live demo"
-      >
-        <HiOutlineArrowTopRightOnSquare className="w-5 h-5 mr-2" aria-hidden="true" />
-        Live Demo
-      </a>
+      {demo && (
+        <a
+          href={demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center text-slate-400 hover:text-red-400 transition-colors"
+          aria-label="View live demo"
+        >
+          <HiOutlineArrowTopRightOnSquare className="w-5 h-5 mr-2" aria-hidden="true" />
+          Live Demo
+        </a>
+      )}
     </div>
   );
 }

@@ -11,6 +11,7 @@ import {
   HiOutlineMapPin,
   HiOutlineAcademicCap,
   HiOutlineLink,
+  HiOutlineDocumentArrowDown,
 } from "react-icons/hi2";
 import ContactForm from "@/components/ContactForm";
 
@@ -71,7 +72,13 @@ const ContactSection = forwardRef<HTMLElement, ContactSectionProps>(
                   </div>
                   <div className="flex items-center text-slate-300">
                     <HiOutlineAcademicCap className="w-5 h-5 mr-3 text-red-400" aria-hidden="true" />
-                    <span>Open to internships & entry-level positions</span>
+                    <span>Open to junior developer opportunities</span>
+                  </div>
+                  <div className="flex items-center text-slate-300">
+                    <HiOutlineDocumentArrowDown className="w-5 h-5 mr-3 text-red-400" aria-hidden="true" />
+                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors">
+                      Download Resume (PDF)
+                    </a>
                   </div>
                 </div>
               </div>

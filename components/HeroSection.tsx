@@ -31,13 +31,13 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
                 <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-transparent opacity-0 animate-slide-right"></div>
               </div>
               <h2 className="text-2xl md:text-3xl text-slate-400 mb-6 animate-fade-in-up delay-300">
-                Frontend Developer & BS Information Technology Student
+                Full-Stack Web Developer | BS Information Technology Graduate
               </h2>
             </div>
             <p className="text-lg text-slate-300 mb-8 max-w-2xl leading-relaxed animate-fade-in-up delay-500">
-              I craft modern web experiences with clean code and thoughtful
-              design. Currently pursuing Information Technology while building
-              projects that matter.
+              I build full-stack web applications with clean code and thoughtful
+              design. BS IT graduate with hands-on OJT experience, ready to
+              deliver real-world solutions.
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 animate-fade-in-up delay-700">
               <a

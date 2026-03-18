@@ -13,22 +13,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Justine Cesaro Campo | Frontend Developer Portfolio",
-  description: "BS Information Technology student passionate about creating exceptional web experiences with modern technologies. Specializing in Next.js, React, TypeScript, and Tailwind CSS.",
-  keywords: ["Frontend Developer", "React", "Next.js", "TypeScript", "Web Developer", "Portfolio", "Justine Cesaro Campo"],
-  authors: [{ name: "Justine Cesaro Campo" }],
-  creator: "Justine Cesaro Campo",
+  title: "Justine Cesar Ocampo | Full-Stack Web Developer",
+  description: "BS Information Technology graduate and full-stack web developer specializing in Next.js, React, TypeScript, and Tailwind CSS. Building production-ready web applications.",
+  keywords: ["Full-Stack Developer", "React", "Next.js", "TypeScript", "Web Developer", "Junior Developer", "Portfolio", "Justine Cesar Ocampo"],
+  authors: [{ name: "Justine Cesar Ocampo" }],
+  creator: "Justine Cesar Ocampo",
   openGraph: {
-    title: "Justine Cesaro Campo | Frontend Developer",
-    description: "BS Information Technology student passionate about creating exceptional web experiences with modern technologies.",
+    title: "Justine Cesar Ocampo | Full-Stack Web Developer",
+    description: "BS IT graduate and full-stack web developer building production-ready applications with Next.js, React, and TypeScript.",
     url: "https://justinecesarocampo.vercel.app",
-    siteName: "Justine Cesaro Campo Portfolio",
+    siteName: "Justine Cesar Ocampo Portfolio",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Justine Cesaro Campo | Frontend Developer",
-    description: "BS Information Technology student passionate about creating exceptional web experiences with modern technologies.",
+    title: "Justine Cesar Ocampo | Full-Stack Web Developer",
+    description: "BS IT graduate and full-stack web developer building production-ready applications with Next.js, React, and TypeScript.",
   },
   robots: {
     index: true,

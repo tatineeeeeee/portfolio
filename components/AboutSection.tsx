@@ -6,19 +6,19 @@ interface AboutSectionProps {
 }
 
 const focusAreas = [
-  "Frontend Development",
+  "Full-Stack Development",
   "Responsive Design",
   "Database Integration",
-  "Performance Optimization",
+  "Payment API Integration",
   "Modern Web Standards",
   "User Experience",
 ];
 
 const currentlyExploring = [
   "Advanced React Patterns",
-  "Full-Stack Development",
+  "DevOps & CI/CD",
   "Cloud Technologies",
-  "UI/UX Design Principles",
+  "System Design Fundamentals",
 ];
 
 const AboutSection = forwardRef<HTMLElement, AboutSectionProps>(
@@ -38,8 +38,8 @@ const AboutSection = forwardRef<HTMLElement, AboutSectionProps>(
               About Me
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-              Passionate developer crafting digital experiences with modern
-              technologies
+              Full-stack developer building real-world applications with
+              Next.js, React, and TypeScript
             </p>
           </div>
 
@@ -54,13 +54,13 @@ const AboutSection = forwardRef<HTMLElement, AboutSectionProps>(
                 <span className="text-red-400 font-semibold">
                   BS Information Technology
                 </span>{" "}
-                student passionate about creating
+                graduate who builds full-stack web applications that
                 <span className="text-red-400 font-semibold">
                   {" "}
-                  exceptional web experiences
+                  solve real problems
                 </span>{" "}
-                that bridge the gap between beautiful design and powerful
-                functionality.
+                — from resort booking systems processing live payments to
+                collaborative developer platforms.
               </p>
             </div>
           </div>
@@ -83,10 +83,11 @@ const AboutSection = forwardRef<HTMLElement, AboutSectionProps>(
                     <h3 className="text-xl font-semibold text-slate-200">My Journey</h3>
                   </div>
                   <p className="text-slate-300 leading-relaxed text-lg">
-                    Currently pursuing my degree in Information Technology
-                    while diving deep into the world of frontend development.
-                    I believe in learning by doing and constantly challenging
-                    myself with new projects and technologies.
+                    Recently graduated with a BS in Information Technology
+                    and completed my OJT, gaining hands-on experience in a
+                    professional development environment. I believe in learning
+                    by building — from full-stack booking systems with real
+                    payment processing to collaborative platforms.
                   </p>
                 </div>
               </div>
@@ -160,8 +161,8 @@ const AboutSection = forwardRef<HTMLElement, AboutSectionProps>(
           {/* Bottom Stats */}
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { value: "15+", label: "Projects Completed", sub: "Academic & Personal" },
-              { value: "4th", label: "Year Student", sub: "BS Information Technology" },
+              { value: "5+", label: "Projects Shipped", sub: "Full-Stack & Frontend" },
+              { value: "BS IT", label: "Graduate", sub: "Information Technology" },
               { value: "24/7", label: "Learning Mode", sub: "Always Growing" },
             ].map((stat) => (
               <div key={stat.label} className="group">
