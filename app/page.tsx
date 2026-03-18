@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { useSectionObserver } from "@/hooks/useSectionObserver";
+import { useActiveSection } from "@/hooks/useActiveSection";
 import LoadingScreen from "@/components/LoadingScreen";
 import Navigation from "@/components/Navigation";
 import BackgroundEffects from "@/components/BackgroundEffects";
@@ -22,13 +22,15 @@ export default function Portfolio() {
   const skillsRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
 
-  const visibleSections = useSectionObserver({
+  const sectionRefs = {
     hero: heroRef,
+    skills: skillsRef,
     about: aboutRef,
     projects: projectsRef,
-    skills: skillsRef,
     contact: contactRef,
-  });
+  };
+
+  const activeSection = useActiveSection(sectionRefs);
 
   useEffect(() => {
     setIsClient(true);
@@ -43,17 +45,16 @@ export default function Portfolio() {
       <LoadingScreen loading={loading} />
       <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-red-500/20 relative overflow-x-hidden">
         <BackgroundEffects isClient={isClient} />
-        <Navigation />
+        <Navigation activeSection={activeSection} />
         <main>
-          <HeroSection ref={heroRef} loading={loading} />
-          <TechStackSection ref={skillsRef} isVisible={visibleSections.has("skills")} />
-          <AboutSection ref={aboutRef} isVisible={visibleSections.has("about")} />
+          <HeroSection ref={heroRef} />
+          <TechStackSection ref={skillsRef} />
+          <AboutSection ref={aboutRef} />
           <ProjectsSection
             ref={projectsRef}
-            isVisible={visibleSections.has("projects")}
             onImageClick={setLightboxImage}
           />
-          <ContactSection ref={contactRef} isVisible={visibleSections.has("contact")} />
+          <ContactSection ref={contactRef} />
         </main>
       </div>
       <Lightbox image={lightboxImage} onClose={handleLightboxClose} />

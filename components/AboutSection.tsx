@@ -1,9 +1,7 @@
 "use client";
 import { forwardRef } from "react";
-
-interface AboutSectionProps {
-  isVisible: boolean;
-}
+import ScrollReveal from "@/components/motion/ScrollReveal";
+import BlurReveal from "@/components/motion/BlurReveal";
 
 const focusAreas = [
   "Full-Stack Development",
@@ -21,57 +19,49 @@ const currentlyExploring = [
   "System Design Fundamentals",
 ];
 
-const AboutSection = forwardRef<HTMLElement, AboutSectionProps>(
-  ({ isVisible }, ref) => {
-    return (
-      <section
-        ref={ref}
-        id="about"
-        className="py-20 px-6 relative z-10"
-        aria-label="About me"
-      >
-        <div className="max-w-6xl mx-auto">
-          <div
-            className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
-          >
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-slate-100 to-red-300 bg-clip-text text-transparent">
-              About Me
-            </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-              Full-stack developer building real-world applications with
-              Next.js, React, and TypeScript
+const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
+  return (
+    <section
+      ref={ref}
+      id="about"
+      className="py-20 px-6 relative z-10"
+      aria-label="About me"
+    >
+      <div className="max-w-6xl mx-auto">
+        <ScrollReveal className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-slate-100 to-red-300 bg-clip-text text-transparent">
+            About Me
+          </h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+            Full-stack developer building real-world applications with
+            Next.js, React, and TypeScript
+          </p>
+        </ScrollReveal>
+
+        {/* Hero Statement */}
+        <BlurReveal className="mb-16 text-center" delay={0.1}>
+          <div className="bg-gradient-to-br from-slate-900/40 to-slate-800/40 rounded-3xl p-8 border border-slate-700/50 hover:border-red-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-red-500/10 backdrop-blur-sm">
+            <p className="text-2xl md:text-3xl font-light text-slate-200 leading-relaxed">
+              I&apos;m a{" "}
+              <span className="text-red-400 font-semibold">
+                BS Information Technology
+              </span>{" "}
+              graduate who builds full-stack web applications that
+              <span className="text-red-400 font-semibold">
+                {" "}
+                solve real problems
+              </span>{" "}
+              — from resort booking systems processing live payments to
+              collaborative developer platforms.
             </p>
           </div>
+        </BlurReveal>
 
-          {/* Hero Statement */}
-          <div
-            className={`mb-16 text-center transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
-            style={{ transitionDelay: "200ms" }}
-          >
-            <div className="bg-gradient-to-br from-slate-900/40 to-slate-800/40 rounded-3xl p-8 border border-slate-700/50 hover:border-red-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-red-500/10 backdrop-blur-sm">
-              <p className="text-2xl md:text-3xl font-light text-slate-200 leading-relaxed">
-                I&apos;m a{" "}
-                <span className="text-red-400 font-semibold">
-                  BS Information Technology
-                </span>{" "}
-                graduate who builds full-stack web applications that
-                <span className="text-red-400 font-semibold">
-                  {" "}
-                  solve real problems
-                </span>{" "}
-                — from resort booking systems processing live payments to
-                collaborative developer platforms.
-              </p>
-            </div>
-          </div>
-
-          {/* Main Content Grid */}
-          <div
-            className={`grid lg:grid-cols-2 gap-12 mb-16 transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
-            style={{ transitionDelay: "400ms" }}
-          >
-            {/* Left Column */}
-            <div className="space-y-8">
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          {/* Left Column */}
+          <div className="space-y-8">
+            <ScrollReveal delay={0.15}>
               <div className="group">
                 <div className="bg-gradient-to-br from-slate-900/60 to-slate-800/60 rounded-2xl p-8 border border-slate-700/50 hover:border-red-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-red-500/10 hover:-translate-y-1">
                   <div className="flex items-center mb-6">
@@ -83,15 +73,16 @@ const AboutSection = forwardRef<HTMLElement, AboutSectionProps>(
                     <h3 className="text-xl font-semibold text-slate-200">My Journey</h3>
                   </div>
                   <p className="text-slate-300 leading-relaxed text-lg">
-                    Recently graduated with a BS in Information Technology
-                    and completed my OJT, gaining hands-on experience in a
-                    professional development environment. I believe in learning
-                    by building — from full-stack booking systems with real
-                    payment processing to collaborative platforms.
+                    BS IT graduate with hands-on OJT experience in a professional
+                    development environment. I learn by building — from full-stack
+                    booking systems with real payment processing to collaborative
+                    platforms with real-time data sync.
                   </p>
                 </div>
               </div>
+            </ScrollReveal>
 
+            <ScrollReveal delay={0.25}>
               <div className="group">
                 <div className="bg-gradient-to-br from-slate-900/60 to-slate-800/60 rounded-2xl p-8 border border-slate-700/50 hover:border-red-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-red-500/10 hover:-translate-y-1">
                   <div className="flex items-center mb-6">
@@ -110,10 +101,12 @@ const AboutSection = forwardRef<HTMLElement, AboutSectionProps>(
                   </p>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
+          </div>
 
-            {/* Right Column */}
-            <div className="space-y-8">
+          {/* Right Column */}
+          <div className="space-y-8">
+            <ScrollReveal delay={0.2}>
               <div className="group">
                 <div className="bg-gradient-to-br from-slate-900/60 to-slate-800/60 rounded-2xl p-8 border border-slate-700/50 hover:border-red-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-red-500/10 hover:-translate-y-1">
                   <div className="flex items-center mb-6">
@@ -134,7 +127,9 @@ const AboutSection = forwardRef<HTMLElement, AboutSectionProps>(
                   </div>
                 </div>
               </div>
+            </ScrollReveal>
 
+            <ScrollReveal delay={0.3}>
               <div className="group">
                 <div className="bg-gradient-to-br from-slate-900/60 to-slate-800/60 rounded-2xl p-8 border border-slate-700/50 hover:border-red-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-red-500/10 hover:-translate-y-1">
                   <div className="flex items-center mb-6">
@@ -155,17 +150,19 @@ const AboutSection = forwardRef<HTMLElement, AboutSectionProps>(
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
+        </div>
 
-          {/* Bottom Stats */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { value: "5+", label: "Projects Shipped", sub: "Full-Stack & Frontend" },
-              { value: "BS IT", label: "Graduate", sub: "Information Technology" },
-              { value: "24/7", label: "Learning Mode", sub: "Always Growing" },
-            ].map((stat) => (
-              <div key={stat.label} className="group">
+        {/* Bottom Stats */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            { value: "5+", label: "Projects Shipped", sub: "Full-Stack & Frontend" },
+            { value: "BS IT", label: "Graduate", sub: "Information Technology" },
+            { value: "24/7", label: "Learning Mode", sub: "Always Growing" },
+          ].map((stat, index) => (
+            <ScrollReveal key={stat.label} delay={0.1 * index}>
+              <div className="group">
                 <div className="bg-gradient-to-br from-red-900/20 to-red-800/20 rounded-2xl p-8 border border-red-500/20 hover:border-red-400/40 transition-all duration-500 hover:shadow-xl hover:shadow-red-500/20 hover:-translate-y-1 text-center">
                   <div className="text-3xl font-bold text-red-400 mb-2 group-hover:scale-110 transition-transform duration-300">
                     {stat.value}
@@ -174,13 +171,13 @@ const AboutSection = forwardRef<HTMLElement, AboutSectionProps>(
                   <div className="text-slate-400 text-sm mt-1">{stat.sub}</div>
                 </div>
               </div>
-            ))}
-          </div>
+            </ScrollReveal>
+          ))}
         </div>
-      </section>
-    );
-  }
-);
+      </div>
+    </section>
+  );
+});
 
 AboutSection.displayName = "AboutSection";
 export default AboutSection;
