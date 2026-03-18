@@ -58,15 +58,15 @@ export default function BackgroundEffects({ isClient }: BackgroundEffectsProps) 
 
       {/* Floating Orbs */}
       <div className={`absolute top-1/4 left-1/4 w-32 h-32 bg-red-500/10 rounded-full blur-xl opacity-50 z-1 ${prefersReducedMotion ? "" : "animate-pulse"}`}></div>
-      <div className={`absolute top-3/4 right-1/4 w-24 h-24 bg-red-400/8 rounded-full blur-xl opacity-40 z-1 ${prefersReducedMotion ? "" : "animate-pulse delay-1000"}`}></div>
-      <div className={`absolute top-1/2 left-3/4 w-40 h-40 bg-red-600/6 rounded-full blur-xl opacity-30 z-1 ${prefersReducedMotion ? "" : "animate-pulse delay-2000"}`}></div>
+      <div className={`absolute top-3/4 right-1/4 w-24 h-24 bg-red-400/8 rounded-full blur-xl opacity-40 z-1 ${prefersReducedMotion ? "" : "animate-pulse"}`} style={{ animationDelay: "1s" }}></div>
+      <div className={`absolute top-1/2 left-3/4 w-40 h-40 bg-red-600/6 rounded-full blur-xl opacity-30 z-1 ${prefersReducedMotion ? "" : "animate-pulse"}`} style={{ animationDelay: "2s" }}></div>
 
       {/* Ping accents */}
       {!prefersReducedMotion && (
         <>
           <div className="absolute top-10 right-1/3 w-2 h-2 bg-red-500/20 rounded-full animate-ping z-1"></div>
-          <div className="absolute bottom-20 left-1/3 w-1 h-1 bg-red-400/30 rounded-full animate-ping delay-500 z-1"></div>
-          <div className="absolute top-1/3 left-10 w-1.5 h-1.5 bg-red-600/15 rounded-full animate-ping delay-1000 z-1"></div>
+          <div className="absolute bottom-20 left-1/3 w-1 h-1 bg-red-400/30 rounded-full animate-ping z-1" style={{ animationDelay: "0.5s" }}></div>
+          <div className="absolute top-1/3 left-10 w-1.5 h-1.5 bg-red-600/15 rounded-full animate-ping z-1" style={{ animationDelay: "1s" }}></div>
         </>
       )}
 
@@ -74,13 +74,14 @@ export default function BackgroundEffects({ isClient }: BackgroundEffectsProps) 
       <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-red-950/20 to-transparent z-1"></div>
       <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-red-950/20 to-transparent z-1"></div>
 
-      {/* Interactive Mouse Follower */}
+      {/* Cursor Glow Effect */}
       {!prefersReducedMotion && (
         <div
-          className="absolute w-96 h-96 bg-red-500/5 rounded-full blur-3xl transition-all duration-700 ease-out z-2"
+          className="absolute w-64 h-64 rounded-full blur-2xl transition-all duration-300 ease-out z-2"
           style={{
-            left: mousePosition.x - 192,
-            top: mousePosition.y - 192,
+            left: mousePosition.x - 128,
+            top: mousePosition.y - 128,
+            background: "radial-gradient(circle, rgba(239,68,68,0.08) 0%, transparent 70%)",
           }}
         ></div>
       )}
@@ -89,7 +90,7 @@ export default function BackgroundEffects({ isClient }: BackgroundEffectsProps) 
       {!prefersReducedMotion && (
         <>
           <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-red-500/10 to-transparent animate-pulse z-1"></div>
-          <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-red-400/8 to-transparent animate-pulse delay-1000 z-1"></div>
+          <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-red-400/8 to-transparent animate-pulse z-1" style={{ animationDelay: "1s" }}></div>
         </>
       )}
     </div>
