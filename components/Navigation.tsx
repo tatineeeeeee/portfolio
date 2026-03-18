@@ -1,12 +1,26 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-export default function Navigation() {
+interface NavigationProps {
+  activeSection?: string;
+}
+
+const navLinks = [
+  { href: "#skills", label: "Skills", section: "skills" },
+  { href: "#about", label: "About", section: "about" },
+  { href: "#projects", label: "Work", section: "projects" },
+  { href: "#contact", label: "Contact", section: "contact" },
+];
+
+export default function Navigation({ activeSection = "hero" }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <nav
-      className="fixed top-0 w-full bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/50 px-6 py-4 z-50 animate-slide-down"
+      className="fixed top-0 w-full bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/50 px-6 py-4 z-50"
       role="navigation"
       aria-label="Main navigation"
     >
@@ -22,27 +36,30 @@ export default function Navigation() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8 text-sm">
-          <a
-            href="#about"
-            className="text-slate-400 hover:text-red-400 transition-all duration-300 hover:scale-105 relative group"
-          >
-            About
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-400 group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a
-            href="#projects"
-            className="text-slate-400 hover:text-red-400 transition-all duration-300 hover:scale-105 relative group"
-          >
-            Work
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-400 group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a
-            href="#contact"
-            className="text-slate-400 hover:text-red-400 transition-all duration-300 hover:scale-105 relative group"
-          >
-            Contact
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-400 group-hover:w-full transition-all duration-300"></span>
-          </a>
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.section;
+            return (
+              <a
+                key={link.section}
+                href={link.href}
+                className={`relative py-1 transition-all duration-300 hover:scale-105 ${
+                  isActive ? "text-red-400" : "text-slate-400 hover:text-red-400"
+                }`}
+              >
+                {link.label}
+                {isActive && (
+                  <motion.span
+                    layoutId={prefersReducedMotion ? undefined : "nav-underline"}
+                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-red-400"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                {!isActive && (
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-400 group-hover:w-full transition-all duration-300" />
+                )}
+              </a>
+            );
+          })}
           <a
             href="https://github.com/tatineeeeeee"
             target="_blank"
@@ -92,10 +109,30 @@ export default function Navigation() {
           className="md:hidden mt-4 pb-4 border-t border-slate-800/50 pt-4 space-y-3"
           role="menu"
         >
-          <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block text-slate-400 hover:text-red-400 transition-colors py-2" role="menuitem">About</a>
-          <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="block text-slate-400 hover:text-red-400 transition-colors py-2" role="menuitem">Work</a>
-          <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-slate-400 hover:text-red-400 transition-colors py-2" role="menuitem">Contact</a>
-          <a href="https://github.com/tatineeeeeee" target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-red-400 transition-colors py-2" role="menuitem">GitHub</a>
+          {navLinks.map((link) => (
+            <a
+              key={link.section}
+              href={link.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block py-2 transition-colors ${
+                activeSection === link.section
+                  ? "text-red-400 font-medium"
+                  : "text-slate-400 hover:text-red-400"
+              }`}
+              role="menuitem"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="https://github.com/tatineeeeeee"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-slate-400 hover:text-red-400 transition-colors py-2"
+            role="menuitem"
+          >
+            GitHub
+          </a>
         </div>
       )}
     </nav>
