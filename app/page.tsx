@@ -1,7 +1,6 @@
 "use client";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useActiveSection } from "@/hooks/useActiveSection";
-import LoadingScreen from "@/components/LoadingScreen";
 import Navigation from "@/components/Navigation";
 import BackgroundEffects from "@/components/BackgroundEffects";
 import HeroSection from "@/components/HeroSection";
@@ -13,8 +12,6 @@ import ContactSection from "@/components/ContactSection";
 import Lightbox from "@/components/Lightbox";
 
 export default function Portfolio() {
-  const [loading, setLoading] = useState(true);
-  const [isClient, setIsClient] = useState(false);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const heroRef = useRef<HTMLElement>(null);
@@ -34,19 +31,12 @@ export default function Portfolio() {
 
   const activeSection = useActiveSection(sectionRefs);
 
-  useEffect(() => {
-    setIsClient(true);
-    const timer = setTimeout(() => setLoading(false), 500);
-    return () => clearTimeout(timer);
-  }, []);
-
   const handleLightboxClose = useCallback(() => setLightboxImage(null), []);
 
   return (
     <>
-      <LoadingScreen loading={loading} />
-      <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-red-500/20 relative overflow-x-hidden">
-        <BackgroundEffects isClient={isClient} />
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-red-500/20 relative overflow-x-hidden">
+        <BackgroundEffects />
         <Navigation activeSection={activeSection} />
         <main>
           <HeroSection ref={heroRef} />

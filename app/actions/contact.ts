@@ -11,23 +11,6 @@ type ContactFormState = {
     message: string
 } | null
 
-// Simple in-memory rate limiting
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
-const RATE_LIMIT_WINDOW = 60 * 1000 // 1 minute
-const MAX_REQUESTS = 3 // 3 submissions per minute
-
-function isRateLimited(ip: string): boolean {
-    const now = Date.now()
-    const entry = rateLimitMap.get(ip)
-
-    if (!entry || now > entry.resetTime) {
-        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW })
-        return false
-    }
-
-    entry.count++
-    return entry.count > MAX_REQUESTS
-}
 
 function validateEmail(email: string): boolean {
     // RFC 5322 compliant email validation
@@ -76,14 +59,6 @@ export async function submitContactForm(
         return {
             success: false,
             message: 'Please enter a valid email address.',
-        }
-    }
-
-    // Rate limiting (using email as identifier since we don't have IP in server actions easily)
-    if (isRateLimited(email)) {
-        return {
-            success: false,
-            message: 'Too many submissions. Please try again in a minute.',
         }
     }
 

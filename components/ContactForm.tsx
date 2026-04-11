@@ -16,8 +16,8 @@ export default function ContactForm() {
         <div
           className={`p-4 rounded-lg ${
             state.success
-              ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
-              : "bg-red-500/20 text-red-400 border border-red-500/30"
+              ? "bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30"
+              : "bg-red-500/20 text-red-500 dark:text-red-400 border border-red-500/30"
           }`}
         >
           {state.message}
@@ -27,9 +27,9 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="name"
-          className="block text-sm font-medium text-slate-300 mb-2"
+          className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2"
         >
-          Name <span className="text-red-400">*</span>
+          Name <span className="text-red-500 dark:text-red-400">*</span>
         </label>
         <input
           type="text"
@@ -37,7 +37,7 @@ export default function ContactForm() {
           name="name"
           required
           autoComplete="name"
-          className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white placeholder-slate-500 transition-colors"
+          className="w-full px-4 py-3 bg-white dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 transition-colors"
           placeholder="Your name"
         />
       </div>
@@ -45,9 +45,9 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-slate-300 mb-2"
+          className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2"
         >
-          Email <span className="text-red-400">*</span>
+          Email <span className="text-red-500 dark:text-red-400">*</span>
         </label>
         <input
           type="email"
@@ -55,7 +55,7 @@ export default function ContactForm() {
           name="email"
           required
           autoComplete="email"
-          className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white placeholder-slate-500 transition-colors"
+          className="w-full px-4 py-3 bg-white dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 transition-colors"
           placeholder="your@email.com"
         />
       </div>
@@ -63,7 +63,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="subject"
-          className="block text-sm font-medium text-slate-300 mb-2"
+          className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2"
         >
           Subject
         </label>
@@ -72,7 +72,7 @@ export default function ContactForm() {
           id="subject"
           name="subject"
           autoComplete="off"
-          className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white placeholder-slate-500 transition-colors"
+          className="w-full px-4 py-3 bg-white dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 transition-colors"
           placeholder="What's this about?"
         />
       </div>
@@ -80,16 +80,16 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-slate-300 mb-2"
+          className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2"
         >
-          Message <span className="text-red-400">*</span>
+          Message <span className="text-red-500 dark:text-red-400">*</span>
         </label>
         <textarea
           id="message"
           name="message"
           required
           rows={5}
-          className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-white placeholder-slate-500 transition-colors resize-none"
+          className="w-full px-4 py-3 bg-white dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 transition-colors resize-none"
           placeholder="Your message..."
         />
       </div>

@@ -28,7 +28,7 @@ export default function Lightbox({ image, onClose }: LightboxProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 cursor-pointer"
+          className="fixed inset-0 z-[100] bg-black/70 dark:bg-black/90 flex items-center justify-center p-4 cursor-pointer"
           onClick={onClose}
           role="dialog"
           aria-modal="true"

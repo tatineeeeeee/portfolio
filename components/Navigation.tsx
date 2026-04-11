@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import ThemeToggle from "@/components/ThemeToggle";
 
 interface NavigationProps {
   activeSection?: string;
@@ -20,7 +21,7 @@ export default function Navigation({ activeSection = "hero" }: NavigationProps) 
 
   return (
     <nav
-      className="fixed top-0 w-full bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/50 px-6 py-4 z-50"
+      className="fixed top-0 w-full bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800/50 px-6 py-4 z-50"
       role="navigation"
       aria-label="Main navigation"
     >
@@ -29,7 +30,7 @@ export default function Navigation({ activeSection = "hero" }: NavigationProps) 
           <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
             <span className="text-white text-sm font-bold">J</span>
           </div>
-          <span className="font-semibold group-hover:text-red-400 transition-colors">
+          <span className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
             Justine
           </span>
         </a>
@@ -43,28 +44,31 @@ export default function Navigation({ activeSection = "hero" }: NavigationProps) 
                 key={link.section}
                 href={link.href}
                 className={`relative py-1 transition-all duration-300 hover:scale-105 ${
-                  isActive ? "text-red-400" : "text-slate-400 hover:text-red-400"
+                  isActive
+                    ? "text-red-500 dark:text-red-400"
+                    : "text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400"
                 }`}
               >
                 {link.label}
                 {isActive && (
                   <motion.span
                     layoutId={prefersReducedMotion ? undefined : "nav-underline"}
-                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-red-400"
+                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-red-500 dark:bg-red-400"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
                 {!isActive && (
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-400 group-hover:w-full transition-all duration-300" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-500 dark:bg-red-400 group-hover:w-full transition-all duration-300" />
                 )}
               </a>
             );
           })}
+          <ThemeToggle />
           <a
             href="https://github.com/tatineeeeeee"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-400 hover:text-red-400 transition-all duration-300 hover:scale-105 flex items-center space-x-1 group"
+            className="text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-all duration-300 hover:scale-105 flex items-center space-x-1 group"
           >
             <svg
               className="w-4 h-4 group-hover:rotate-12 transition-transform"
@@ -79,34 +83,37 @@ export default function Navigation({ activeSection = "hero" }: NavigationProps) 
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-slate-400 hover:text-red-400 transition-colors p-2 hover:bg-slate-800/50 rounded-lg"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-expanded={mobileMenuOpen}
-          aria-controls="mobile-menu"
-          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
+        <div className="md:hidden flex items-center space-x-2">
+          <ThemeToggle />
+          <button
+            className="text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors p-2 hover:bg-slate-100 dark:hover:bg-slate-800/50 rounded-lg"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            {mobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div
           id="mobile-menu"
-          className="md:hidden mt-4 pb-4 border-t border-slate-800/50 pt-4 space-y-3"
+          className="md:hidden mt-4 pb-4 border-t border-slate-200 dark:border-slate-800/50 pt-4 space-y-3"
           role="menu"
         >
           {navLinks.map((link) => (
@@ -116,8 +123,8 @@ export default function Navigation({ activeSection = "hero" }: NavigationProps) 
               onClick={() => setMobileMenuOpen(false)}
               className={`block py-2 transition-colors ${
                 activeSection === link.section
-                  ? "text-red-400 font-medium"
-                  : "text-slate-400 hover:text-red-400"
+                  ? "text-red-500 dark:text-red-400 font-medium"
+                  : "text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400"
               }`}
               role="menuitem"
             >
@@ -128,7 +135,7 @@ export default function Navigation({ activeSection = "hero" }: NavigationProps) 
             href="https://github.com/tatineeeeeee"
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-slate-400 hover:text-red-400 transition-colors py-2"
+            className="block text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors py-2"
             role="menuitem"
           >
             GitHub

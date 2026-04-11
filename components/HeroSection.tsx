@@ -29,6 +29,8 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
       className="pt-32 pb-20 px-6 relative z-10"
       aria-label="Introduction"
     >
+      {/* Light mode accent blob */}
+      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-red-500/5 dark:bg-transparent rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
       <div className="max-w-4xl mx-auto relative z-20">
         <Wrapper
           {...(!prefersReducedMotion && {
@@ -41,22 +43,22 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
             variants={prefersReducedMotion ? undefined : item}
             className="mb-6"
           >
-            <p className="text-red-400 text-sm font-medium mb-2">
+            <p className="text-red-500 dark:text-red-400 text-sm font-medium mb-2">
               Hello, I&apos;m
             </p>
             <div className="relative">
-              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[96px] font-bold mb-4 bg-gradient-to-r from-slate-100 via-red-200 to-slate-400 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[96px] font-bold mb-4 bg-gradient-to-r from-slate-900 dark:from-slate-100 via-red-600 dark:via-red-200 to-slate-700 dark:to-slate-400 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
                 Justine
               </h1>
             </div>
-            <h2 className="text-2xl md:text-3xl text-slate-400 mb-6">
+            <h2 className="text-2xl md:text-3xl text-slate-500 dark:text-slate-400 mb-6">
               Full-Stack Web Developer
             </h2>
           </motion.div>
 
           <motion.p
             variants={prefersReducedMotion ? undefined : item}
-            className="text-lg text-slate-300 mb-8 max-w-2xl leading-relaxed"
+            className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl leading-relaxed"
           >
             I build and ship production web applications — from booking
             platforms processing live payments to finance trackers backed by
@@ -76,7 +78,7 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
             </MagneticButton>
             <MagneticButton
               href="mailto:justinecesarocampo@gmail.com"
-              className="border border-slate-700 hover:border-red-400 text-slate-300 hover:text-red-400 px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 hover:bg-slate-800/50"
+              className="border border-slate-300 dark:border-slate-700 hover:border-red-500 dark:hover:border-red-400 text-slate-600 dark:text-slate-300 hover:text-red-500 dark:hover:text-red-400 px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 hover:bg-slate-100 dark:hover:bg-slate-800/50"
             >
               <HiOutlineEnvelope className="w-5 h-5" aria-hidden="true" />
               <span>Contact Me</span>
@@ -85,7 +87,7 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
               href="https://github.com/tatineeeeeee"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-slate-700 hover:border-red-400 text-slate-300 hover:text-red-400 px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 hover:bg-slate-800/50"
+              className="border border-slate-300 dark:border-slate-700 hover:border-red-500 dark:hover:border-red-400 text-slate-600 dark:text-slate-300 hover:text-red-500 dark:hover:text-red-400 px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 hover:bg-slate-100 dark:hover:bg-slate-800/50"
             >
               <SiGithub className="w-5 h-5" aria-hidden="true" />
               <span>GitHub</span>
@@ -96,13 +98,13 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
 
       {/* Floating Code Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-5" aria-hidden="true">
-        <div className="absolute top-20 right-10 text-red-500/10 text-6xl font-mono animate-float">
+        <div className="absolute top-20 right-10 text-red-500/10 dark:text-red-500/10 text-6xl font-mono animate-float">
           {"{ }"}
         </div>
-        <div className="absolute bottom-32 left-10 text-red-400/10 text-4xl font-mono animate-float" style={{ animationDelay: "1s" }}>
+        <div className="absolute bottom-32 left-10 text-red-400/10 dark:text-red-400/10 text-4xl font-mono animate-float" style={{ animationDelay: "1s" }}>
           {"</>"}
         </div>
-        <div className="absolute top-1/2 right-1/4 text-red-300/10 text-5xl font-mono animate-float" style={{ animationDelay: "2s" }}>
+        <div className="absolute top-1/2 right-1/4 text-red-300/10 dark:text-red-300/10 text-5xl font-mono animate-float" style={{ animationDelay: "2s" }}>
           {"( )"}
         </div>
       </div>

@@ -11,13 +11,13 @@ const TechStackSection = forwardRef<HTMLElement>((_props, ref) => {
     <section
       ref={ref}
       id="skills"
-      className="py-20 border-t border-slate-800/50 relative z-10"
+      className="py-20 border-t border-slate-200 dark:border-slate-800/50 relative z-10"
       aria-label="Technical skills"
     >
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4">Tech Stack</h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
             Technologies I use to bring ideas to life
           </p>
         </ScrollReveal>
@@ -29,7 +29,7 @@ const TechStackSection = forwardRef<HTMLElement>((_props, ref) => {
 
             return (
               <div key={category}>
-                <h3 className="text-sm font-semibold text-red-400 uppercase tracking-wider mb-4">
+                <h3 className="text-sm font-semibold text-red-500 dark:text-red-400 uppercase tracking-wider mb-4">
                   {category}
                 </h3>
                 <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -41,7 +41,7 @@ const TechStackSection = forwardRef<HTMLElement>((_props, ref) => {
                         key={skill.name}
                         variants={staggerItemVariants}
                         role="listitem"
-                        className={`bg-slate-900/50 rounded-2xl border border-slate-800/50 hover:border-red-500/30 hover:bg-slate-900/70 transition-all duration-500 hover:scale-105 group ${
+                        className={`bg-white/70 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800/50 hover:border-red-500/30 hover:bg-white/90 dark:hover:bg-slate-900/70 transition-all duration-500 hover:scale-105 group ${
                           isLarge ? "md:col-span-2 p-6" : "p-5"
                         }`}
                         style={{ boxShadow: "none" }}
@@ -61,7 +61,7 @@ const TechStackSection = forwardRef<HTMLElement>((_props, ref) => {
                             />
                           </div>
                           <div className={isLarge ? "" : "text-center"}>
-                            <span className="text-slate-200 font-medium group-hover:text-red-300 transition-colors text-sm block">
+                            <span className="text-slate-800 dark:text-slate-200 font-medium group-hover:text-red-500 dark:group-hover:text-red-300 transition-colors text-sm block">
                               {skill.name}
                             </span>
                             {isLarge && skill.label && (
