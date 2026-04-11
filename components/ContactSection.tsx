@@ -56,8 +56,8 @@ const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
               <div className="space-y-4">
                 <div className="flex items-center text-slate-300">
                   <HiOutlineEnvelope className="w-5 h-5 mr-3 text-red-400" aria-hidden="true" />
-                  <a href="mailto:justinecesarocampo@gmail.com" className="hover:text-red-400 transition-colors">
-                    justinecesarocampo@gmail.com
+                  <a href="mailto:justine.cesarocampo21@gmail.com" className="hover:text-red-400 transition-colors">
+                    justine.cesarocampo21@gmail.com
                   </a>
                 </div>
                 <div className="flex items-center text-slate-300">
@@ -93,22 +93,13 @@ const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
                   <span>GitHub Profile</span>
                 </a>
                 <a
-                  href="https://linkedin.com/in/justine-cesar-ocampo-516a81271"
+                  href="https://linkedin.com/in/justinecesarocampo"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center text-slate-300 hover:text-red-400 transition-colors group"
                 >
                   <SiLinkedin className="w-5 h-5 mr-3 text-[#0A66C2] group-hover:scale-110 transition-transform" aria-hidden="true" />
                   <span>LinkedIn Profile</span>
-                </a>
-                <a
-                  href="https://www.facebook.com/justinecesarocampo05"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center text-slate-300 hover:text-red-400 transition-colors group"
-                >
-                  <SiFacebook className="w-5 h-5 mr-3 text-[#1877F2] group-hover:scale-110 transition-transform" aria-hidden="true" />
-                  <span>Facebook Profile</span>
                 </a>
               </nav>
             </div>

@@ -5,9 +5,10 @@ import LoadingScreen from "@/components/LoadingScreen";
 import Navigation from "@/components/Navigation";
 import BackgroundEffects from "@/components/BackgroundEffects";
 import HeroSection from "@/components/HeroSection";
+import MetricsSection from "@/components/MetricsSection";
+import ProjectsSection from "@/components/ProjectsSection";
 import TechStackSection from "@/components/TechStackSection";
 import AboutSection from "@/components/AboutSection";
-import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import Lightbox from "@/components/Lightbox";
 
@@ -17,16 +18,17 @@ export default function Portfolio() {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const heroRef = useRef<HTMLElement>(null);
-  const aboutRef = useRef<HTMLElement>(null);
+  const metricsRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
+  const aboutRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
 
   const sectionRefs = {
     hero: heroRef,
+    projects: projectsRef,
     skills: skillsRef,
     about: aboutRef,
-    projects: projectsRef,
     contact: contactRef,
   };
 
@@ -48,12 +50,13 @@ export default function Portfolio() {
         <Navigation activeSection={activeSection} />
         <main>
           <HeroSection ref={heroRef} />
-          <TechStackSection ref={skillsRef} />
-          <AboutSection ref={aboutRef} />
+          <MetricsSection ref={metricsRef} />
           <ProjectsSection
             ref={projectsRef}
             onImageClick={setLightboxImage}
           />
+          <TechStackSection ref={skillsRef} />
+          <AboutSection ref={aboutRef} />
           <ContactSection ref={contactRef} />
         </main>
       </div>

@@ -2,22 +2,7 @@
 import { forwardRef } from "react";
 import ScrollReveal from "@/components/motion/ScrollReveal";
 import BlurReveal from "@/components/motion/BlurReveal";
-
-const focusAreas = [
-  "Full-Stack Development",
-  "Responsive Design",
-  "Database Integration",
-  "Payment API Integration",
-  "Modern Web Standards",
-  "User Experience",
-];
-
-const currentlyExploring = [
-  "Advanced React Patterns",
-  "DevOps & CI/CD",
-  "Cloud Technologies",
-  "System Design Fundamentals",
-];
+import { focusAreas, currentlyExploring } from "@/lib/data";
 
 const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
   return (
@@ -33,8 +18,7 @@ const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
             About Me
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-            Full-stack developer building real-world applications with
-            Next.js, React, and TypeScript
+            Full-stack developer who ships tested, production-grade applications
           </p>
         </ScrollReveal>
 
@@ -42,23 +26,22 @@ const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
         <BlurReveal className="mb-16 text-center" delay={0.1}>
           <div className="bg-gradient-to-br from-slate-900/40 to-slate-800/40 rounded-3xl p-8 border border-slate-700/50 hover:border-red-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-red-500/10 backdrop-blur-sm">
             <p className="text-2xl md:text-3xl font-light text-slate-200 leading-relaxed">
-              I&apos;m a{" "}
+              I ship production web applications with the{" "}
               <span className="text-red-400 font-semibold">
-                BS Information Technology
+                testing discipline
               </span>{" "}
-              graduate who builds full-stack web applications that
+              most senior developers would expect from a mid-level engineer —
+              109 unit tests, 12 E2E tests, CI/CD pipelines, and a security
+              audit.{" "}
               <span className="text-red-400 font-semibold">
-                {" "}
-                solve real problems
-              </span>{" "}
-              — from resort booking systems processing live payments to
-              collaborative developer platforms.
+                All before my first full-time role.
+              </span>
             </p>
           </div>
         </BlurReveal>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* Left Column */}
           <div className="space-y-8">
             <ScrollReveal delay={0.15}>
@@ -73,10 +56,13 @@ const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
                     <h3 className="text-xl font-semibold text-slate-200">My Journey</h3>
                   </div>
                   <p className="text-slate-300 leading-relaxed text-lg">
-                    BS IT graduate with hands-on OJT experience in a professional
-                    development environment. I learn by building — from full-stack
-                    booking systems with real payment processing to collaborative
-                    platforms with real-time data sync.
+                    During my internship at ServeBeez, I solo-built TripSulit — a
+                    production tour booking platform processing real payments.
+                    For my capstone, I led development on Kampo Ibayo, a resort
+                    booking system, across 306 commits. Then I built GastoGuard
+                    with 109 unit tests, 12 E2E tests, and a full CI/CD pipeline
+                    — because I believe if your code isn&apos;t tested, it
+                    isn&apos;t done.
                   </p>
                 </div>
               </div>
@@ -91,13 +77,15 @@ const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-semibold text-slate-200">Philosophy</h3>
+                    <h3 className="text-xl font-semibold text-slate-200">What Sets Me Apart</h3>
                   </div>
                   <p className="text-slate-300 leading-relaxed text-lg">
-                    I believe great software should be intuitive, accessible,
-                    and solve real problems. Clean code isn&apos;t just about
-                    following best practices—it&apos;s about creating
-                    maintainable solutions that can evolve with user needs.
+                    Most fresh graduates ship projects that work on demo day. I
+                    ship projects with automated test suites, CI/CD pipelines,
+                    and security audits. I&apos;ve processed real payments
+                    through PayMongo, handled real customer data with proper
+                    security, and built systems that real businesses depend on —
+                    not just class assignments.
                   </p>
                 </div>
               </div>
@@ -152,27 +140,6 @@ const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
               </div>
             </ScrollReveal>
           </div>
-        </div>
-
-        {/* Bottom Stats */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            { value: "5+", label: "Projects Shipped", sub: "Full-Stack & Frontend" },
-            { value: "BS IT", label: "Graduate", sub: "Information Technology" },
-            { value: "24/7", label: "Learning Mode", sub: "Always Growing" },
-          ].map((stat, index) => (
-            <ScrollReveal key={stat.label} delay={0.1 * index}>
-              <div className="group">
-                <div className="bg-gradient-to-br from-red-900/20 to-red-800/20 rounded-2xl p-8 border border-red-500/20 hover:border-red-400/40 transition-all duration-500 hover:shadow-xl hover:shadow-red-500/20 hover:-translate-y-1 text-center">
-                  <div className="text-3xl font-bold text-red-400 mb-2 group-hover:scale-110 transition-transform duration-300">
-                    {stat.value}
-                  </div>
-                  <div className="text-slate-300 font-medium">{stat.label}</div>
-                  <div className="text-slate-400 text-sm mt-1">{stat.sub}</div>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
         </div>
       </div>
     </section>

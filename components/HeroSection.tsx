@@ -58,10 +58,10 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
             variants={prefersReducedMotion ? undefined : item}
             className="text-lg text-slate-300 mb-8 max-w-2xl leading-relaxed"
           >
-            I build production-ready web applications with modern tools — from
-            payment systems processing real transactions to real-time
-            collaboration platforms. Focused on clean code, performance, and
-            user experience.
+            I build and ship production web applications — from booking
+            platforms processing live payments to finance trackers backed by
+            109 automated tests and CI/CD pipelines. Fresh grad,
+            production-grade standards.
           </motion.p>
 
           <motion.div
