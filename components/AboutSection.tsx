@@ -33,9 +33,8 @@ const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
               <span className="text-red-400 font-semibold">
                 testing discipline
               </span>{" "}
-              most senior developers would expect from a mid-level engineer —
-              109 unit tests, 12 E2E tests, CI/CD pipelines, and a security
-              audit.{" "}
+              most senior developers would expect — automated test suites,
+              CI/CD pipelines, and a security audit.{" "}
               <span className="text-red-400 font-semibold">
                 All before my first full-time role.
               </span>
@@ -59,13 +58,13 @@ const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
                     <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200">My Journey</h3>
                   </div>
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-                    During my internship at ServeBeez, I solo-built TripSulit — a
+                    During my internship at ServeBeez, I built TripSulit — a
                     production tour booking platform processing real payments.
                     For my capstone, I led development on Kampo Ibayo, a resort
-                    booking system, across 306 commits. Then I built GastoGuard
-                    with 109 unit tests, 12 E2E tests, and a full CI/CD pipeline
-                    — because I believe if your code isn&apos;t tested, it
-                    isn&apos;t done.
+                    booking system serving a real business. Then I built
+                    GastoGuard with a full automated test suite and CI/CD
+                    pipeline — because I believe if your code isn&apos;t tested,
+                    it isn&apos;t done.
                   </p>
                 </div>
               </div>
@@ -83,12 +82,14 @@ const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
                     <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200">What Sets Me Apart</h3>
                   </div>
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-                    Most fresh graduates ship projects that work on demo day. I
+                    Most portfolios show projects that work on demo day. I
                     ship projects with automated test suites, CI/CD pipelines,
                     and security audits. I&apos;ve processed real payments
                     through PayMongo, handled real customer data with proper
                     security, and built systems that real businesses depend on —
-                    not just class assignments.
+                    not just class assignments. I&apos;ve coordinated with team
+                    members, communicated with business stakeholders, and led
+                    code reviews — not just written code in isolation.
                   </p>
                 </div>
               </div>

@@ -85,11 +85,11 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
                 variants={prefersReducedMotion ? undefined : item}
               >
                 <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-xl leading-relaxed mx-auto md:mx-0">
-                  Fresh graduate who built a production tour marketplace
-                  processing real payments at ServeBeez, led a 306-commit
-                  capstone for a live resort business, and shipped a finance
-                  tracker backed by 109 automated tests. I write code that
-                  businesses depend on.
+                  I built a production tour marketplace processing real
+                  payments at ServeBeez, led a 306-commit capstone for a
+                  live resort business, and shipped a finance tracker backed
+                  by 121 automated tests. I write code that businesses
+                  depend on.
                 </p>
               </ItemWrapper>
 

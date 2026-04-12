@@ -126,10 +126,8 @@ export const featuredProject: FeaturedProject = {
     "Full-stack personal finance app with production-grade testing and CI/CD — built to prove reliability, not just functionality.",
   problem:
     "Most budgeting tools help you track spending but don't enforce software quality. I wanted to build a finance app that was as reliable as it was useful — with automated testing, continuous integration, and security baked in from day one.",
-  role: "Solo developer. Architected the full stack, wrote 109 unit tests with Vitest and convex-test, 12 end-to-end tests with Playwright, configured CI/CD via GitHub Actions, conducted an OWASP Top 10 security audit, and shipped as a PWA.",
+  role: "Solo developer. Architected the full stack, wrote comprehensive test suites with Vitest, convex-test, and Playwright, configured CI/CD via GitHub Actions, conducted an OWASP Top 10 security audit, and shipped as a PWA.",
   outcomes: [
-    "109 unit tests ensuring code reliability across the entire stack",
-    "12 end-to-end tests with Playwright covering critical user flows",
     "CI/CD pipeline via GitHub Actions — tests run on every push",
     "OWASP Top 10 security audit completed and documented",
     "PWA — installable on any device, works offline",
@@ -137,7 +135,7 @@ export const featuredProject: FeaturedProject = {
   ],
   backendHighlights: [
     "Convex real-time backend with server functions",
-    "109 unit tests including backend mutation coverage",
+    "Backend mutation testing with convex-test",
     "Real-time financial health scoring algorithm",
   ],
   tech: [
@@ -167,9 +165,7 @@ export const highlightProjects: FeaturedProject[] = [
     role: "Lead developer in a 3-person capstone team. Built the customer booking flow, integrated PayMongo payment processing, designed the admin dashboard, and implemented OCR payment verification.",
     outcomes: [
       "Real-time availability — eliminates double-bookings",
-      "Secure payment processing via PayMongo API for live transactions",
       "Admin dashboard reducing manual work for resort staff",
-      "AI chatbot handling 200+ FAQs for customer support",
       "306 commits across the project lifecycle",
     ],
     backendHighlights: [
@@ -200,8 +196,6 @@ export const highlightProjects: FeaturedProject[] = [
     role: "Web developer in a 2-person intern team at ServeBeez. Built the full-stack web platform: multi-step checkout with PayMongo payments, real-time messaging, organizer dashboard, admin panel, AI-powered tour search, and 23+ transactional email templates via AWS SES.",
     outcomes: [
       "Live production marketplace serving real paying customers",
-      "28-table database schema handling the full booking lifecycle",
-      "Multi-step checkout with PayMongo (GCash, PayMaya, card)",
       "AI-powered tour search and trip guide using Claude and Gemini",
       "10+ automated cron jobs for slot holds, reminders, and scheduling",
       "Role-based access for travelers, organizers, and admins",
@@ -466,13 +460,13 @@ export const experiences: ExperienceEntry[] = [
     type: "capstone",
     dateRange: "Jun 2025 — Mar 2026",
     description:
-      "Led a 3-person team building a production booking system for an operating resort business, handling real customer reservations and payments.",
+      "Led a 3-person team building a production booking system for an operating resort business. Coordinated task delegation, ran code reviews, and communicated directly with the resort owner to gather requirements and iterate on the admin dashboard.",
     accomplishments: [
       "Shipped a live booking system serving real customers for an operating business",
+      "Coordinated a 3-person team — task delegation, code reviews, and direct stakeholder communication with the resort owner",
       "Integrated PayMongo payment processing with webhook verification",
       "Built an AI chatbot handling 200+ FAQs for customer support",
       "Delivered 306 commits across the full project lifecycle",
-      "Designed a complete admin dashboard for resort staff",
     ],
     technologies: [
       "Next.js 15",
