@@ -7,6 +7,7 @@ import HeroSection from "@/components/HeroSection";
 import MetricsSection from "@/components/MetricsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import TechStackSection from "@/components/TechStackSection";
+import ExperienceSection from "@/components/ExperienceSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Lightbox from "@/components/Lightbox";
@@ -16,6 +17,7 @@ export default function Portfolio() {
 
   const heroRef = useRef<HTMLElement>(null);
   const metricsRef = useRef<HTMLElement>(null);
+  const experienceRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
@@ -23,6 +25,7 @@ export default function Portfolio() {
 
   const sectionRefs = {
     hero: heroRef,
+    experience: experienceRef,
     projects: projectsRef,
     skills: skillsRef,
     about: aboutRef,
@@ -41,6 +44,7 @@ export default function Portfolio() {
         <main>
           <HeroSection ref={heroRef} />
           <MetricsSection ref={metricsRef} />
+          <ExperienceSection ref={experienceRef} />
           <ProjectsSection
             ref={projectsRef}
             onImageClick={setLightboxImage}

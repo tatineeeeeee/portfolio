@@ -11,12 +11,15 @@ const TechStackSection = forwardRef<HTMLElement>((_props, ref) => {
     <section
       ref={ref}
       id="skills"
-      className="py-20 border-t border-slate-200 dark:border-slate-800/50 relative z-10"
+      className="py-20 bg-slate-100/50 dark:bg-slate-900/30 relative z-10"
       aria-label="Technical skills"
     >
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Tech Stack</h2>
+          <span className="font-mono text-xs text-red-500/40 dark:text-red-400/40 block mb-2">
+            {"// 04"}
+          </span>
+          <h2 className="text-3xl font-display font-bold mb-4">Tech Stack</h2>
           <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
             Technologies I use to bring ideas to life
           </p>
@@ -27,9 +30,18 @@ const TechStackSection = forwardRef<HTMLElement>((_props, ref) => {
             const categorySkills = skills.filter((s) => s.category === category);
             if (categorySkills.length === 0) return null;
 
+            const categoryColorMap: Record<string, string> = {
+              Frontend: "text-red-500 dark:text-red-400",
+              Backend: "text-amber-500 dark:text-amber-400",
+              "Auth & Payments": "text-violet-500 dark:text-violet-400",
+              Testing: "text-emerald-500 dark:text-emerald-400",
+              "DevOps & Tools": "text-cyan-500 dark:text-cyan-400",
+            };
+            const headerColor = categoryColorMap[category] || "text-red-500 dark:text-red-400";
+
             return (
               <div key={category}>
-                <h3 className="text-sm font-semibold text-red-500 dark:text-red-400 uppercase tracking-wider mb-4">
+                <h3 className={`text-sm font-semibold ${headerColor} uppercase tracking-wider mb-4`}>
                   {category}
                 </h3>
                 <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">

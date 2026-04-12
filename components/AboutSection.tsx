@@ -14,7 +14,10 @@ const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
     >
       <div className="max-w-6xl mx-auto">
         <ScrollReveal className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-slate-800 dark:from-slate-100 to-red-500 dark:to-red-300 bg-clip-text text-transparent">
+          <span className="font-mono text-xs text-red-500/40 dark:text-red-400/40 block mb-2">
+            {"// 05"}
+          </span>
+          <h2 className="text-4xl font-display font-bold mb-4 bg-gradient-to-r from-slate-800 dark:from-slate-100 to-red-500 dark:to-red-300 bg-clip-text text-transparent">
             About Me
           </h2>
           <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg">

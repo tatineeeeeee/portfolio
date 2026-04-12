@@ -89,6 +89,7 @@ export interface FeaturedProject extends Project {
   problem: string;
   role: string;
   outcomes: string[];
+  backendHighlights?: string[];
 }
 
 export interface Skill {
@@ -106,6 +107,17 @@ export interface Metric {
   detail: string;
 }
 
+export interface ExperienceEntry {
+  id: string;
+  role: string;
+  company: string;
+  type: "internship" | "capstone" | "freelance" | "full-time";
+  dateRange: string;
+  description: string;
+  accomplishments: string[];
+  technologies: string[];
+}
+
 // ── Projects ──────────────────────────────────────────────────────────
 
 export const featuredProject: FeaturedProject = {
@@ -121,6 +133,11 @@ export const featuredProject: FeaturedProject = {
     "CI/CD pipeline via GitHub Actions — tests run on every push",
     "OWASP Top 10 security audit completed and documented",
     "PWA — installable on any device, works offline",
+    "Real-time financial health scoring algorithm",
+  ],
+  backendHighlights: [
+    "Convex real-time backend with server functions",
+    "109 unit tests including backend mutation coverage",
     "Real-time financial health scoring algorithm",
   ],
   tech: [
@@ -155,6 +172,12 @@ export const highlightProjects: FeaturedProject[] = [
       "AI chatbot handling 200+ FAQs for customer support",
       "306 commits across the project lifecycle",
     ],
+    backendHighlights: [
+      "PayMongo payment processing with webhook verification",
+      "Supabase PostgreSQL database with real-time subscriptions",
+      "AI chatbot handling 200+ FAQs for customer support",
+      "OCR-based payment verification system",
+    ],
     tech: [
       "Next.js 15",
       "React 19",
@@ -182,6 +205,14 @@ export const highlightProjects: FeaturedProject[] = [
       "AI-powered tour search and trip guide using Claude and Gemini",
       "10+ automated cron jobs for slot holds, reminders, and scheduling",
       "Role-based access for travelers, organizers, and admins",
+    ],
+    backendHighlights: [
+      "28-table production database schema",
+      "PayMongo multi-gateway checkout (GCash, PayMaya, card)",
+      "23+ transactional email templates via AWS SES",
+      "10+ automated cron jobs for scheduling and reminders",
+      "Claude + Gemini AI integration for tour search",
+      "Real-time messaging via Convex subscriptions",
     ],
     tech: [
       "Next.js 16",
@@ -388,4 +419,68 @@ export const currentlyExploring = [
   "Database Optimization",
   "CI/CD Best Practices",
   "API Design Patterns",
+];
+
+// ── Backend Metrics ───────────────────────────────────────────────────
+
+export const backendMetrics: Metric[] = [
+  { value: "28", label: "Database Tables", detail: "TripSulit Production Schema" },
+  { value: "23+", label: "Email Templates", detail: "AWS SES Transactional" },
+  { value: "3", label: "Payment Gateways", detail: "GCash, PayMaya, Card" },
+  { value: "2", label: "AI APIs Integrated", detail: "Claude + Gemini" },
+];
+
+// ── Experience ────────────────────────────────────────────────────────
+
+export const experiences: ExperienceEntry[] = [
+  {
+    id: "servebeez",
+    role: "Web Developer Intern",
+    company: "ServeBeez",
+    type: "internship",
+    dateRange: "2026",
+    description:
+      "Built TripSulit, a full-stack tour booking marketplace connecting Filipino travelers with tour organizers, processing real customer payments in production.",
+    accomplishments: [
+      "Designed and implemented a 28-table database schema handling the full booking lifecycle",
+      "Built multi-step checkout with PayMongo (GCash, PayMaya, card payments)",
+      "Integrated real-time messaging between travelers and organizers",
+      "Created 23+ transactional email templates via AWS SES",
+      "Implemented AI-powered tour search using Claude and Gemini APIs",
+    ],
+    technologies: [
+      "Next.js 16",
+      "TypeScript",
+      "Convex",
+      "Clerk",
+      "PayMongo",
+      "AWS SES",
+      "Claude API",
+      "Gemini API",
+    ],
+  },
+  {
+    id: "kampo-ibayo",
+    role: "Capstone Project Lead",
+    company: "Kampo Ibayo Resort",
+    type: "capstone",
+    dateRange: "Jun 2025 — Mar 2026",
+    description:
+      "Led a 3-person team building a production booking system for an operating resort business, handling real customer reservations and payments.",
+    accomplishments: [
+      "Shipped a live booking system serving real customers for an operating business",
+      "Integrated PayMongo payment processing with webhook verification",
+      "Built an AI chatbot handling 200+ FAQs for customer support",
+      "Delivered 306 commits across the full project lifecycle",
+      "Designed a complete admin dashboard for resort staff",
+    ],
+    technologies: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Supabase",
+      "PayMongo",
+      "Tailwind CSS",
+    ],
+  },
 ];

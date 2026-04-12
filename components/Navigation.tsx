@@ -9,6 +9,7 @@ interface NavigationProps {
 }
 
 const navLinks = [
+  { href: "#experience", label: "Experience", section: "experience" },
   { href: "#projects", label: "Work", section: "projects" },
   { href: "#skills", label: "Skills", section: "skills" },
   { href: "#about", label: "About", section: "about" },
@@ -20,10 +21,13 @@ export default function Navigation({ activeSection = "hero" }: NavigationProps) 
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <nav
+    <motion.nav
       className="fixed top-0 w-full bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800/50 px-6 py-4 z-50"
       role="navigation"
       aria-label="Main navigation"
+      initial={prefersReducedMotion ? undefined : { y: -20, opacity: 0 }}
+      animate={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
+      transition={prefersReducedMotion ? undefined : { duration: 0.5, ease: "easeOut" }}
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <a href="#hero" className="flex items-center space-x-2 group" aria-label="Home">
@@ -142,6 +146,6 @@ export default function Navigation({ activeSection = "hero" }: NavigationProps) 
           </a>
         </div>
       )}
-    </nav>
+    </motion.nav>
   );
 }

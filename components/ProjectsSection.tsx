@@ -95,7 +95,7 @@ function ProjectImage({ src, alt, onClick }: { src: string; alt: string; onClick
 function FeaturedCard({ project, onImageClick }: { project: FeaturedProject; onImageClick: (img: string) => void }) {
   return (
     <TiltCard>
-      <article className="group bg-white/80 dark:bg-slate-900/40 rounded-2xl border border-slate-200 dark:border-slate-800/50 overflow-hidden hover:border-red-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/10">
+      <article className="group gradient-border bg-white/80 dark:bg-slate-900/40 rounded-2xl border border-slate-200 dark:border-slate-800/50 overflow-hidden hover:border-red-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/10">
         <button
           className="w-full h-64 md:h-80 relative overflow-hidden cursor-pointer block"
           onClick={() => onImageClick(project.image)}
@@ -153,6 +153,22 @@ function FeaturedCard({ project, onImageClick }: { project: FeaturedProject; onI
               ))}
             </ul>
           </div>
+
+          {project.backendHighlights && project.backendHighlights.length > 0 && (
+            <div className="mb-6">
+              <h4 className="text-sm font-semibold text-amber-500 dark:text-amber-400 uppercase tracking-wider mb-3">
+                Backend &amp; Architecture
+              </h4>
+              <ul className="grid md:grid-cols-2 gap-2">
+                {project.backendHighlights.map((highlight) => (
+                  <li key={highlight} className="flex items-start text-slate-600 dark:text-slate-300 text-sm">
+                    <span className="w-1.5 h-1.5 bg-amber-500 dark:bg-amber-400 rounded-full mr-2 mt-1.5 flex-shrink-0" />
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <div className="flex flex-wrap gap-2 mb-6" aria-label="Technologies used">
             {project.tech.map((tech) => (
@@ -232,6 +248,22 @@ function HighlightCard({ project, onImageClick }: { project: FeaturedProject; on
               </ul>
             </div>
 
+            {project.backendHighlights && project.backendHighlights.length > 0 && (
+              <div className="mb-4">
+                <h4 className="text-xs font-semibold text-amber-500 dark:text-amber-400 uppercase tracking-wider mb-2">
+                  Backend &amp; Architecture
+                </h4>
+                <ul className="space-y-1">
+                  {project.backendHighlights.slice(0, 3).map((highlight) => (
+                    <li key={highlight} className="flex items-start text-slate-600 dark:text-slate-300 text-xs">
+                      <span className="w-1 h-1 bg-amber-500 dark:bg-amber-400 rounded-full mr-2 mt-1.5 flex-shrink-0" />
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <div className="flex flex-wrap gap-1.5 mb-4" aria-label="Technologies used">
               {project.tech.map((tech) => (
                 <span key={tech} className="bg-slate-100 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full text-xs">
@@ -307,7 +339,10 @@ const ProjectsSection = forwardRef<HTMLElement, ProjectsSectionProps>(
       >
         <div className="max-w-6xl mx-auto">
           <ScrollReveal className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Featured Work</h2>
+            <span className="font-mono text-xs text-red-500/40 dark:text-red-400/40 block mb-2">
+              {"// 03"}
+            </span>
+            <h2 className="text-3xl font-display font-bold mb-4">Featured Work</h2>
             <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
               Projects that showcase real-world problem-solving and production-ready development
             </p>

@@ -13,6 +13,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
+      },
       animation: {
         'gradient': 'gradient 3s ease infinite',
         'float': 'float 6s ease-in-out infinite',

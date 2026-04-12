@@ -22,7 +22,10 @@ const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
     >
       <div className="max-w-4xl mx-auto">
         <ScrollReveal className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Let&apos;s Connect</h2>
+          <span className="font-mono text-xs text-red-500/40 dark:text-red-400/40 block mb-2">
+            {"// 06"}
+          </span>
+          <h2 className="text-3xl font-display font-bold mb-4">Let&apos;s Connect</h2>
           <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
             I&apos;m always excited to discuss new opportunities,
             collaborate on projects, or just chat about technology and
