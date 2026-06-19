@@ -1,5 +1,5 @@
 "use client";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
 interface StaggerContainerProps {
@@ -31,21 +31,6 @@ export default function StaggerContainer({
   className,
   staggerDelay = 0.06,
 }: StaggerContainerProps) {
-  const prefersReducedMotion = useReducedMotion();
-
-  if (prefersReducedMotion) {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0 }}
-        className={className}
-      >
-        {children}
-      </motion.div>
-    );
-  }
-
   return (
     <motion.div
       variants={containerVariants(staggerDelay)}

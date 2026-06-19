@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 import ThemeToggle from "@/components/ThemeToggle";
 
 interface NavigationProps {
@@ -18,16 +17,15 @@ const navLinks = [
 
 export default function Navigation({ activeSection = "hero" }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const prefersReducedMotion = useReducedMotion();
 
   return (
     <motion.nav
       className="fixed top-0 w-full bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800/50 px-6 py-4 z-50"
       role="navigation"
       aria-label="Main navigation"
-      initial={prefersReducedMotion ? undefined : { y: -20, opacity: 0 }}
+      initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <a href="#hero" className="flex items-center space-x-2 group" aria-label="Home">
@@ -56,7 +54,7 @@ export default function Navigation({ activeSection = "hero" }: NavigationProps) 
                 {link.label}
                 {isActive && (
                   <motion.span
-                    layoutId={prefersReducedMotion ? undefined : "nav-underline"}
+                    layoutId="nav-underline"
                     className="absolute -bottom-1 left-0 w-full h-0.5 bg-red-500 dark:bg-red-400"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
