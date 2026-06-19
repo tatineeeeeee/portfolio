@@ -1,5 +1,5 @@
 "use client";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
 interface BlurRevealProps {
@@ -9,12 +9,6 @@ interface BlurRevealProps {
 }
 
 export default function BlurReveal({ children, className, delay = 0 }: BlurRevealProps) {
-  const prefersReducedMotion = useReducedMotion();
-
-  if (prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
-  }
-
   return (
     <motion.div
       initial={{ filter: "blur(10px)", opacity: 0 }}
