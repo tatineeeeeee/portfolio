@@ -243,8 +243,8 @@ export const otherProjects: Project[] = [
       "Sentry",
     ],
     github: "https://github.com/tatineeeeeee/puntahan",
-    demo: "",
-    status: "In Progress",
+    demo: "https://puntahan.vercel.app",
+    status: "Live",
     image: "/projects/puntahan.png",
   },
   {
