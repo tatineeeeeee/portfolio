@@ -24,7 +24,16 @@ export default function ScrollReveal({
   };
 
   if (prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0 }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
   }
 
   return (

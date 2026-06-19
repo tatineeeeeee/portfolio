@@ -21,8 +21,8 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
   };
 
-  const Wrapper = prefersReducedMotion ? "div" : motion.div;
-  const ItemWrapper = prefersReducedMotion ? "div" : motion.div;
+  const Wrapper = motion.div;
+  const ItemWrapper = motion.div;
 
   return (
     <section
@@ -39,15 +39,15 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
           {/* Text Column */}
           <div className="flex-1 text-center md:text-left">
             <Wrapper
-              {...(!prefersReducedMotion && {
-                variants: container,
-                initial: "hidden",
-                animate: "visible",
-              })}
+              variants={prefersReducedMotion ? undefined : container}
+              initial={prefersReducedMotion ? { opacity: 0 } : "hidden"}
+              animate={prefersReducedMotion ? { opacity: 1 } : "visible"}
+              transition={prefersReducedMotion ? { duration: 0 } : undefined}
             >
               {/* Availability Badge */}
               <ItemWrapper
                 variants={prefersReducedMotion ? undefined : item}
+                {...(prefersReducedMotion && { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0 } })}
                 className="mb-6"
               >
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
@@ -64,6 +64,7 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
               {/* Name + Hook Headline */}
               <ItemWrapper
                 variants={prefersReducedMotion ? undefined : item}
+                {...(prefersReducedMotion && { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0 } })}
                 className="mb-6"
               >
                 <p className="text-red-500 dark:text-red-400 text-sm font-medium mb-3 tracking-wide uppercase">
@@ -83,6 +84,7 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
               {/* Personal Paragraph */}
               <ItemWrapper
                 variants={prefersReducedMotion ? undefined : item}
+                {...(prefersReducedMotion && { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0 } })}
               >
                 <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-xl leading-relaxed mx-auto md:mx-0">
                   I built a production tour marketplace processing real
@@ -96,6 +98,7 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
               {/* CTA Buttons */}
               <ItemWrapper
                 variants={prefersReducedMotion ? undefined : item}
+                {...(prefersReducedMotion && { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0 } })}
                 className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center md:justify-start mb-10"
               >
                 <MagneticButton
@@ -125,6 +128,7 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
               {/* Terminal Code Card */}
               <ItemWrapper
                 variants={prefersReducedMotion ? undefined : item}
+                {...(prefersReducedMotion && { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0 } })}
                 className="hidden lg:block max-w-md"
               >
                 <div className="bg-slate-950 rounded-xl border border-slate-800 overflow-hidden shadow-2xl">
@@ -157,8 +161,8 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
           <motion.div
             className="flex-shrink-0 relative"
             initial={prefersReducedMotion ? undefined : { opacity: 0, scale: 0.9 }}
-            animate={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }}
-            transition={prefersReducedMotion ? undefined : { duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, delay: 0.4, ease: "easeOut" }}
           >
             <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-red-500/20 via-amber-400/10 to-transparent blur-sm" aria-hidden="true" />
             <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-white/80 dark:border-slate-800/80 shadow-2xl shadow-red-500/10 bg-slate-200 dark:bg-slate-800">
@@ -180,8 +184,8 @@ const HeroSection = forwardRef<HTMLElement>((_props, ref) => {
         className="absolute inset-0 overflow-hidden pointer-events-none z-5"
         aria-hidden="true"
         initial={prefersReducedMotion ? undefined : { opacity: 0 }}
-        animate={prefersReducedMotion ? undefined : { opacity: 1 }}
-        transition={prefersReducedMotion ? undefined : { duration: 1.2, delay: 1 }}
+        animate={{ opacity: 1 }}
+        transition={prefersReducedMotion ? { duration: 0 } : { duration: 1.2, delay: 1 }}
       >
         <div className="absolute top-40 right-20 text-red-500/8 dark:text-red-500/8 text-6xl font-mono animate-float">
           {"{ }"}

@@ -26,8 +26,8 @@ export default function Navigation({ activeSection = "hero" }: NavigationProps) 
       role="navigation"
       aria-label="Main navigation"
       initial={prefersReducedMotion ? undefined : { y: -20, opacity: 0 }}
-      animate={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-      transition={prefersReducedMotion ? undefined : { duration: 0.5, ease: "easeOut" }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.5, ease: "easeOut" }}
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <a href="#hero" className="flex items-center space-x-2 group" aria-label="Home">
